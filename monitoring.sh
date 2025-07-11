@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# エラー出力を抑制
+exec 2>/dev/null
+
+# バナーの定義
+BANNER="===== System Monitoring Report ====="
+
 # ARCHITECTURE
 arch=$(uname -a)
 
@@ -43,6 +49,7 @@ mac=$(ip link | grep "link/ether" | awk '{print $2}')
 # SUDO
 sudo=$(journalctl _COMM=sudo| grep COMMAND | wc -l)
 
+echo $BANNER;
 printf "#Architecture: $arch\n";
 printf "#CPU physical: $p_cpu\n";
 printf "#vCPU: $v_cpu\n";
