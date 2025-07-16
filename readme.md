@@ -38,7 +38,7 @@ VM（仮想マシン） は、
 
 ## リロード
 ルール変更した後などに変更を適用
-```sudo ufw reload
+```sudo ufw reload```
 
 # OSの確認方法
 ```uname -a```
@@ -46,3 +46,27 @@ VM（仮想マシン） は、
 # sudo
 ## sudoインストール確認
 ```dpkg -l | grep sudo```
+
+
+# クローンとハッシュ化
+マシン名：b2b
+1. ハッシュ化する
+マシン名：b2bをハッシュ化する。＊.vdiへのPATH
+```sha1sum /home/ユーザ/sgoinfre/b2b/b2b.vdi```
+*値が出るまで時間がかかる。
+
+2. signature.txt
+   1.で出力された値をsignature.txtに貼り付けてpush
+   ＊push後はマシン名:b2bは一切触ってはいけない。（ハッシュ値が変わってしまうため。）
+
+（レビュー開始）
+
+3. マシン名:b2bのハッシュ値をレビュワーの前で出力。
+```sha1sum /home/ユーザ/sgoinfre/b2b/b2b.vdi```
+signature.txtの中身と値が同じになるか確認する。
+
+4. マシン名:b2bをクローンする
+
+5. クローンしたマシンを開いてレビューを進める。
+
+   
